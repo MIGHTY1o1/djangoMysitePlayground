@@ -1,0 +1,15 @@
+{% if latest_question_list %}
+<ul>
+  {% for question in latest_question_list %}
+  <!-- in the below line we are passing a query parameter in the url to a endopoint with the question clicked as sending their id with parameter -->
+  <!-- <li><a href="/polls/{{ question.id }}/">{{ question.question_text }}</a></li>we will not use the hardcoded endpoints -->
+  <li>
+    <a href="{% url 'polls:detail' question.id %}"
+      >{{ question.question_text }}</a
+    >
+  </li>
+  {% endfor %}
+</ul>
+{% else %}
+<p>No polls are available.</p>
+{% endif %}
